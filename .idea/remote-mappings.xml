@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteMappingsManager">
+    <list>
+      <list>
+        <remote-mappings server-id="python@docker-compose://[C:\Users\Schragelab\Documents\airflow\docker-compose.yaml]:airflow-webserver/python">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$/plugins" remote-root="/opt/airflow/plugins" />
+              <mapping local-root="$PROJECT_DIR$/dags" remote-root="/opt/airflow/dags" />
+            </list>
+          </settings>
+        </remote-mappings>
+      </list>
+    </list>
+  </component>
+</project>
