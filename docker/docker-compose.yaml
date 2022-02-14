@@ -41,15 +41,25 @@ x-airflow-common:
   build: .
   environment:
     &airflow-common-env
+    # [core]
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
-    AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
     AIRFLOW__CORE__LOAD_DEFAULT_CONNECTIONS: 'false'
+    AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW__CORE__FERNET_KEY}
+
+    # [api]
+    AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
+
+    # [webserver]
     AIRFLOW__WEBSERVER__DAG_DEFAULT_VIEW: 'graph'
+
+    # [smtp]
     AIRFLOW__SMTP__SMTP_HOST: ${AIRFLOW__SMTP__SMTP_HOST}
     AIRFLOW__SMTP__SMTP_MAIL_FROM: ${AIRFLOW__SMTP__SMTP_MAIL_FROM}
+
+    # other env variables
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     PYTHONPATH: "$${PYTHONPATH}:/opt/airflow/"
   volumes:
@@ -198,6 +208,17 @@ services:
     volumes:
       - .:/sources
 
+  airflow-connections:
+    <<: *airflow-common
+    environment:
+      <<: *airflow-common-env
+    # yamllint disable rule:line-length
+    command:
+      - bash
+      - -c
+      - airflow connections add 'schrage_lab_db' --conn-type 'mssql' --conn-host '${db_server}' --conn-schema '${db_schema}' --conn-login '${db_uid}' --conn-password '${db_pwd}' --conn-port '${db_port}'
+    # yamllint enable rule:line-length
+
   airflow-cli:
     <<: *airflow-common
     profiles:
@@ -206,10 +227,11 @@ services:
       <<: *airflow-common-env
       CONNECTION_CHECK_MAX_COUNT: "0"
     # Workaround for entrypoint issue. See: https://github.com/apache/airflow/issues/16252
+    # yamllint disable rule:line-length
     command:
       - bash
       - -c
       - airflow
-
+    # yamllint enable rule:line-length
 volumes:
   postgres-db-volume:
