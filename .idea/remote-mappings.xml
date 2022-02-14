@@ -11,6 +11,14 @@
             </list>
           </settings>
         </remote-mappings>
+        <remote-mappings server-id="python@docker-compose://[C:\Users\atward\Documents\airflow\docker\docker-compose.yaml]:airflow-webserver//usr/local/bin/python">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$/plugins" remote-root="/opt/airflow/plugins" />
+              <mapping local-root="$PROJECT_DIR$/dags" remote-root="/opt/airflow/dags" />
+            </list>
+          </settings>
+        </remote-mappings>
       </list>
     </list>
   </component>
