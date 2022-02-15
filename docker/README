@@ -1,4 +1,0 @@
-# Docker compose
-
-Extending the Docker compose file provided by Airflow.
-Added airflow-connections service to create connections without exposing secrets
