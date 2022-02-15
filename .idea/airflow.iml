@@ -6,7 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Remote Python 3.7.12 Docker Compose (airflow-webserver at [C:\Users\atward\Documents\airflow\docker\docker-compose.yaml])" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Remote Python 3.7.12 Docker (airflow:latest) (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">
