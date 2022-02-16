@@ -27,6 +27,12 @@ db_pwd=
 
 BE SURE THAT YOU'RE .env FILE DOES NOT GET TRACKED BY GIT!
 
+Holy cow, what a weird bug. When using Docker as a remote interpreter with a Windows host, the run/debug configuration
+of a given script needs to have the path volume mounted (docker run -v flag). However, the config GUI in PyCharm will
+convert the generated path from folder selection dialog into a Unix-style format (e.g /c/). A workaround is to manually 
+type the host path and ensure the drive letter is lower case.
+https://youtrack.jetbrains.com/issue/IDEA-266072
+
 # Docker compose
 Extending the Docker compose file provided by Airflow.
 Added airflow-connections service to create connections without exposing secrets
