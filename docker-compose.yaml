@@ -31,7 +31,7 @@ x-airflow-common:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
-    - ${fs_server}:/bucket
+    - ${FS_SERVER}:/bucket
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -182,7 +182,7 @@ services:
     command:
       - bash
       - -c
-      - airflow connections add 'schrage_lab_db' --conn-type 'mssql' --conn-host '${db_server}' --conn-schema '${db_schema}' --conn-login '${db_uid}' --conn-password '${db_pwd}' --conn-port '${db_port}'
+      - airflow connections add 'schrage_lab_db' --conn-type 'mssql' --conn-host '${DB_SERVER}' --conn-schema '${DB_SCHEMA}' --conn-login '${DB_UID}' --conn-password '${DB_PWD}' --conn-port '${DB_PORT}'
     # yamllint enable rule:line-length
 
   airflow-cli:
