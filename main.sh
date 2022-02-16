@@ -18,4 +18,5 @@ for i in "${keys[@]}"; do
   sed -i "s/.*${key}.*/${key}=${value}/" .env
 done
 
+# start airflow environment
 docker compose up
