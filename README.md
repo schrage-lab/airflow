@@ -28,6 +28,5 @@ db_pwd=
 BE SURE THAT YOU'RE .env FILE DOES NOT GET TRACKED BY GIT!
 
 # Docker compose
-
 Extending the Docker compose file provided by Airflow.
 Added airflow-connections service to create connections without exposing secrets
