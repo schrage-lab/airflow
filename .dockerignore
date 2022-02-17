@@ -1,7 +1,7 @@
 dags
 logs
 plugins
-.env
+*.env
 docker-compose.yaml
 LICENSE
 README.md
