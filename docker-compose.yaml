@@ -27,6 +27,7 @@ x-airflow-common:
     # other env variables
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     PYTHONPATH: "$${PYTHONPATH}:/opt/airflow/"
+
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
@@ -174,8 +175,8 @@ services:
     volumes:
       - .:/sources
 
-  # make any connections here
   airflow-connections:
+    # make any connections here
     <<: *airflow-common
     environment:
       <<: *airflow-common-env
@@ -194,12 +195,10 @@ services:
       <<: *airflow-common-env
       CONNECTION_CHECK_MAX_COUNT: "0"
     # Workaround for entrypoint issue. See: https://github.com/apache/airflow/issues/16252
-    # yamllint disable rule:line-length
     command:
       - bash
       - -c
       - airflow
-    # yamllint enable rule:line-length
 
 volumes:
   postgres-db-volume:
