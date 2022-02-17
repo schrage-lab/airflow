@@ -18,6 +18,4 @@ awk '{print $0}' *.env > .env
 echo "$shared" >> .env
 
 # start airflow environment
-# docker compose up
-
-echo "finished"
+docker compose up -d
