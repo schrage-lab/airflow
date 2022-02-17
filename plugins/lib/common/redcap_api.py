@@ -32,10 +32,10 @@ class PostAPI:
         return request.json()
 
     def get_config_info(self) -> None:
-        fpath = '/opt/airflow/.env'
+        fpath = '/opt/airflow/.env.redcap'
         load_dotenv(dotenv_path=fpath)
-        self.token = os.getenv('redcap_token')
-        self.url = os.getenv('redcap_url')
+        self.token = os.getenv('REDCAP_TOKEN')
+        self.url = os.getenv('REDCAP_URL')
 
     def log_api_response(self):
         # todo: create log?
@@ -479,7 +479,3 @@ def _helper_to_add_key_values_to_post_dict(key_basename: str, values_list: list,
     for idx, value in enumerate(values_list):
         post_dict[f'{key_basename}[{idx}]'] = value
     return post_dict
-
-
-if __name__=='__main__':
-    print(export_arms())
