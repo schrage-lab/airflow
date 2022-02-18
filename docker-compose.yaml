@@ -18,12 +18,14 @@ x-airflow-common:
     AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW__CORE__FERNET_KEY}
     AIRFLOW__CORE__DEFAULT_TIMEZONE: 'America/Chicago'
 
-    # [logging]
-    AIRFLOW__LOGGING__BASE_LOG_FOLDER: ${AIRFLOW__LOGGING__BASE_LOG_FOLDER}
-    AIRFLOW__LOGGING__DAG_PROCESSOR_MANAGER_LOG_LOCATION: ${AIRFLOW__LOGGING__DAG_PROCESSOR_MANAGER_LOG_LOCATION}
+    # [email]
+    AIRFLOW__EMAIL__HTML_CONTENT_TEMPLATE: ${AIRFLOW__EMAIL__HTML_CONTENT_TEMPLATE}
+    AIRFLOW__EMAIL__SUBJECT_TEMPLATE: ${AIRFLOW__EMAIL__SUBJECT_TEMPLATE}
 
     # [smtp]
     AIRFLOW__SMTP__SMTP_HOST: ${AIRFLOW__SMTP__SMTP_HOST}
+    AIRFLOW__SMTP__SMTP_USER: ${AIRFLOW__SMTP__SMTP_USER}
+    AIRFLOW__SMTP__SMTP_PASSWORD_SECRET: ${AIRFLOW__SMTP__SMTP_PASSWORD_SECRET}
     AIRFLOW__SMTP__SMTP_MAIL_FROM: ${AIRFLOW__SMTP__SMTP_MAIL_FROM}
 
     # [webserver]
@@ -35,7 +37,7 @@ x-airflow-common:
 
   volumes:
     - ./dags:/opt/airflow/dags
-    - ${FS_SERVER}/airflow/logs:/opt/airflow/logs
+    - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
     - ${FS_SERVER}:/bucket
   user: "${AIRFLOW_UID:-50000}:0"
