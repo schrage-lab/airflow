@@ -9,3 +9,6 @@ awk '{print $0}' *.env > .env
 
 # start airflow environment
 docker compose up -d
+
+# open chrome for airflow UI
+"/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" https://localhost:8080
