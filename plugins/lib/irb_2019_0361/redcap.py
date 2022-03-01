@@ -21,6 +21,8 @@ class Events(enum.Enum):
     remri_structural_v_arm_1 = 15
     reogttmri_visit_arm_1 = 16
     redexa_data_arm_1 = 17
+    vo2max_data_arm_1 = 18
+    revo2max_data_arm_1 = 19
 
 
 class Forms(enum.Enum):
@@ -57,3 +59,6 @@ class Forms(enum.Enum):
     insulin_data = 30
     cognitive_scores = 31
     internal_audit_review_form = 32
+    yogtt023_vo2max_visit_checklist = 33
+    yogtt024_vo2max_data_collection_form = 34
+    yogtt025_dexa_visit_checklist = 35
