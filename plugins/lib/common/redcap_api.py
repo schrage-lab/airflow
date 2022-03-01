@@ -32,7 +32,7 @@ class PostAPI:
         return request.json()
 
     def get_config_info(self) -> None:
-        fpath = '/opt/airflow/.env.redcap'
+        fpath = '/opt/airflow/.env'
         load_dotenv(dotenv_path=fpath)
         self.token = os.getenv('REDCAP_TOKEN')
         self.url = os.getenv('REDCAP_URL')
